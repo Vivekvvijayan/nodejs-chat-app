@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Me</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="/stylesheet/style.css" />
+    <!-- <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script> -->
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="chat-container">
+
+        <!-- header start -->
+
+        <header>
+          <div class="left">
+            <img src="./assets/user.png"class="icon" />
+            <div class="user-name">
+              <h3>Vivek</span>
+              <h4 class="status">Online</h4>
+            </div>
+          </div>
+          <div class="right">
+            <img src="./assets/phone-call.png"class="icon" alt="" srcset="" />
+            <img src="./assets/dots.png" alt=""class="icon" srcset="" />
+          </div>
+        </header>
+
+        <!-- header end -->
+
+        <!-- chat body start -->
+
+        <section class="chat">
+
+            <!-- <div class="message-container send">
+                <p class="message">Hai how are you ?</p>
+                <small>12.00 am</small>
+            </div>
+           -->
+        
+            
+        </section>
+
+        <!-- chat body end -->
+
+        <!-- message sedn section start -->
+        <footer>
+
+            <div class="input-container receive">
+                <img src="./assets/smile.png"class="icon emoji" alt="">
+                <input type="text" placeholder="Type a message" id="message-box">
+                <img src="./assets/plus.png"class="icon plus" alt="">
+            </div>
+            <span class="mic-button">
+
+                <img src="./assets/send.png" class="mic send-section-button"alt="">
+
+            </span>
+        </footer>
+
+        <!-- message sedn section end -->
+
+        <!-- script linking for functionlity -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/script.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
