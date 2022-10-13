@@ -1,12 +1,12 @@
 const input = document.querySelector("#message-box");
 const button = document.querySelector(".send-section-button");
 const message_body = document.querySelector(".chat");
+// var socket
 
+// window.addEventListener('load',() => {
+   var socket = io();
 
-window.addEventListener('load',() => {
-  let socket = io();
-  socket.emit("connection",socket)
-})  
+// })  
 
 
 
@@ -14,32 +14,53 @@ window.addEventListener('load',() => {
 window.addEventListener("keydown", (e) => {
   if (e.keyCode === 13) {
     appendMessage();
+    sendMessage(input.value);
+    resetInput();
   }
 });
 
 // send message after button clicked
 button.addEventListener("click", () => {
+  console.log(input.value);
   appendMessage();
-  sendMessage();
+  sendMessage(input.value);
+  resetInput();
 });
 
-const sendMessage = () => {
+const sendMessage = (msg) => {
   // socekt sneding message
-
-  console.log(input.value);
+  
+  socket.emit('message',msg)
+ 
 };
 
-const receiveMessage = () => {
+
+
+
+
+
+
   // socket reeceibing code
-};
+
+
+
 
 // append message codes
-const appendMessage = () => {
-  if (input.value !== "") {
+const appendMessage = (incoming_message) => {
+  console.log(incoming_message);
+  if (input.value !== "" || incoming_message !== "") {
+
+    if(incoming_message){
+
+      createMessageElement(incoming_message,"receive");
+      message_body.scrollTop = message_body.scrollHeight;
+      return;
+    }
     createMessageElement(input.value, "sender");
     message_body.scrollTop = message_body.scrollHeight;
   }
 };
+
 
 const createMessageElement = (message, person) => {
   const messageElement = document.createElement("div");
@@ -59,11 +80,17 @@ const createMessageElement = (message, person) => {
   messageElement.appendChild(p);
   messageElement.appendChild(time);
   message_body.appendChild(messageElement);
-  resetInput();
+ 
 };
 // clear input after enter value
 const resetInput = () => {
   input.value = "";
 };
 
+
+
+socket.on('msg',(msg) => {
+    
+  appendMessage(msg);
+})
 
