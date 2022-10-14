@@ -4,7 +4,8 @@
   "description": "blue color :: #0081ff\r background color :: #ddeef8",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev":"nodemon server.js"
   },
   "keywords": [],
   "author": "",
