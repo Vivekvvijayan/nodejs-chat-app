@@ -23,6 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .container .chat-container {
@@ -80,11 +81,13 @@ header .left > div h4 {
 section.chat {
   width: 100%;
   height: 77%;
+
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 10px;
   -ms-overflow-style: none;
+
   scrollbar-color: transparent transparent; /*just hides the scrollbar for firefox */
 }
 
@@ -93,8 +96,6 @@ section.chat::-webkit-scrollbar {
 }
 
 .message-container {
-  min-width: 150px;
-  min-height: 39px;
   width: 300px;
   height: auto;
 
@@ -242,17 +243,13 @@ input::placeholder {
   .container {
     /* padding: 10px; */
     width: 100%;
-    height: 100%
+    height: 100%;
   }
   .container .chat-container {
-    
     width: 100%;
     height: 100%;
     border-radius: 0px;
     padding: 0;
-    
-  
-  
   }
   .mic-button {
     margin-left: 10px;
@@ -264,38 +261,27 @@ input::placeholder {
     overflow-y: auto;
     padding: 20px 10px 20px 10px;
     margin-bottom: 20px;
-    
-  
-    
   }
-  footer{
+  footer {
     padding: 9px;
-    background-color:#ddeef8;
-    
+    background-color: #ddeef8;
   }
- 
-
 
   /* message styles in mobile */
 
-  .message-container{
-    min-width:160px;
+  .message-container {
+   
     width: 190px;
-    min-height:40px;
+  
     height: auto;
     border-radius: 5px;
     margin-top: 10px;
-    
   }
-  small{
+  small {
     margin-right: 5px;
   }
 
-
   p.message {
     max-width: 100px;
-   
   }
-
-
 }
