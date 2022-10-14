@@ -11,6 +11,8 @@ if (!name) {
   document.body.style.display = "block";
 }
 
+window.addEventListener("resize", windowSizeChanged);
+
 // var socket
 
 // window.addEventListener('load',() => {
@@ -106,3 +108,11 @@ socket.on("connected", (socketID) => {
 socket.on("leave", (socketID) => {
   alert(`${socketID} Disconnected`);
 });
+
+// push up when key baord open messgaes
+function windowSizeChanged() {
+  if (((pageInPortraitMode === true) && (window.innerHeight < window.innerWidth)) || ((pageInPortraitMode === false) && (window.innerHeight > window.innerWidth))) {
+    pageInPortraitMode = window.innerHeight > window.innerWidth;
+    document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+  }
+}

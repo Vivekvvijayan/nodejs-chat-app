@@ -222,6 +222,7 @@ footer {
 input#message-box {
   padding: 10px;
   font-weight: 800;
+  touch-action: none; 
 }
 input::placeholder {
   color: #d5d5d5;
@@ -284,5 +285,34 @@ input::placeholder {
   p.message {
     max-width: 150px;
    
+  }
+}
+
+
+/* tablet screen media queries */
+
+
+@media screen and (min-width:767px) and (max-width:1023px){
+  body {
+    height: 100%;
+  }
+  html {
+  
+    height: -webkit-fill-available;
+  }
+  .container {
+   
+    width: 100%;
+    height: 100%;
+
+  }
+  .container .chat-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    
+  }
+  footer{
+    padding:13px;
   }
 }
