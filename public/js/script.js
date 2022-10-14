@@ -19,10 +19,12 @@ var socket = io();
 // })
 
 window.addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
-    appendMessage();
-    sendMessage(input.value);
-    resetInput();
+  if (input.value !== "") {
+    if (e.keyCode === 13) {
+      appendMessage();
+      sendMessage(input.value);
+      resetInput();
+    }
   }
 });
 
@@ -95,13 +97,12 @@ socket.on("msg", ({ name, message }) => {
   appendMessage(message, name);
 });
 
-
 // connected time
-socket.on('connected',(socketID) => {
-  alert(`${socketID} Joined in chat`)
-})
+socket.on("connected", (socketID) => {
+  alert(`${socketID} Joined in chat`);
+});
 
 // disconnection time
-socket.on('leave',(socketID) => {
-  alert(`${socketID} Disconnected`)
-})
+socket.on("leave", (socketID) => {
+  alert(`${socketID} Disconnected`);
+});
