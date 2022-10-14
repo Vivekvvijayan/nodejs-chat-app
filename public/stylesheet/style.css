@@ -271,7 +271,7 @@ input::placeholder {
 
   .message-container {
    
-    width: 190px;
+    width: 200px;
   
     height: auto;
     border-radius: 5px;
@@ -282,6 +282,7 @@ input::placeholder {
   }
 
   p.message {
-    max-width: 100px;
+    max-width: 150px;
+   
   }
 }
