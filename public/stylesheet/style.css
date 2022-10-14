@@ -17,6 +17,7 @@ html {
 }
 body {
   background-color: #f5f5f5;
+  display: none;
 }
 
 .container {
@@ -95,6 +96,7 @@ section.chat::-webkit-scrollbar {
 
 .message-container {
   min-width: 150px;
+  min-height: 39px;
   width: 300px;
   height: auto;
 
@@ -107,6 +109,8 @@ p.message {
   font-size: 0.7rem;
   word-break: break-all;
   white-space: normal;
+  margin-top: 15px;
+  margin-left: 4px;
 }
 /* sending message styles */
 .send {
@@ -141,6 +145,23 @@ small {
   right: 10px;
   bottom: 2px;
   padding-top: 5px;
+}
+#userNameStyle{
+  position: absolute;
+  top: 0;
+  left: 15px;
+  font-size: .8rem;
+ 
+  padding-top: 5px;
+}
+.uName{
+
+  color: orange;
+}
+
+.rName{
+  color: chocolate;
+
 }
 
 /* chat section styles */

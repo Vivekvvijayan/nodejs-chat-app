@@ -14,12 +14,23 @@ app.get("/", (req, res) => {
 
 // socket io receiving and sedning messages
 io.on("connection", (socket) => {
-  console.log("a user connect");
-  socket.on("message", (message) => {
- 
-    socket.broadcast.emit("msg",message);
-    
+
+  socket.broadcast.emit("connected",socket.id)
+  socket.on("message", ({name,message}) => {
+    socket.broadcast.emit("msg", {
+      name: name,
+      message: message
+    });
+
+// handle disconnection in server
+    socket.on("disconnect", () => {
+      socket.broadcast.emit("leave",socket.id)
+    })
   });
+
+ 
+
+
 });
 
 server.listen(3000, () => console.log("server running.."));
