@@ -11,7 +11,10 @@ if (!name) {
   document.body.style.display = "block";
 }
 
-window.addEventListener("resize", windowSizeChanged);
+// detecct keybaord 
+
+
+
 
 // var socket
 
@@ -71,12 +74,12 @@ const createMessageElement = (message, person, userName) => {
   messageElement.setAttribute("class", "message-container");
 
   if (person === "sender") {
-    messageElement.classList.add("send", "send");
+    messageElement.classList.add("class", "send");
   } else {
     messageElement.classList.add("class", "receive");
   }
   const time = document.createElement("small");
-  const user = document.createElement("small");
+  const user = document.createElement("p");
   const p = document.createElement("p");
   p.setAttribute("class", "message");
   user.setAttribute("id", "userNameStyle");
@@ -117,12 +120,7 @@ socket.on("leave", (socketID) => {
 });
 
 // push up when key baord open messgaes
-function windowSizeChanged() {
-  if (((pageInPortraitMode === true) && (window.innerHeight < window.innerWidth)) || ((pageInPortraitMode === false) && (window.innerHeight > window.innerWidth))) {
-    pageInPortraitMode = window.innerHeight > window.innerWidth;
-    document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
-  }
-}
+
 
 
 
