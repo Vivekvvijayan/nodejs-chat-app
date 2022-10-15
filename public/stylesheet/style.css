@@ -55,6 +55,7 @@ header .left {
 header .left > div {
   display: flex;
   flex-direction: column;
+  margin-left: 5px;
 }
 header .left > div h3,
 h4 {
@@ -63,6 +64,7 @@ h4 {
 
 header .left > div h4 {
   font-size: 12px;
+  margin-left: 5px;
 }
 
 .icon {

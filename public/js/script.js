@@ -1,6 +1,7 @@
 const input = document.querySelector("#message-box");
 const button = document.querySelector(".send-section-button");
 const message_body = document.querySelector(".chat");
+const header_status = document.querySelector(".header-status");
 
 let name;
 
@@ -11,10 +12,7 @@ if (!name) {
   document.body.style.display = "block";
 }
 
-// detecct keybaord 
-
-
-
+// detecct keybaord
 
 // var socket
 
@@ -23,11 +21,18 @@ var socket = io();
 
 // })
 
+input.addEventListener("input", () => {
+  sendTypingStatus();
+});
+
+
+
 window.addEventListener("keydown", (e) => {
   if (input.value !== "") {
     if (e.keyCode === 13) {
       appendMessage();
       sendMessage(input.value);
+      sendTypingStatus(isStoppedTyping = true);
       resetInput();
     }
   }
@@ -36,11 +41,12 @@ window.addEventListener("keydown", (e) => {
 // send message after button clicked
 button.addEventListener("click", () => {
   if (input.value !== "") {
-  appendMessage();
-  sendMessage(input.value);
-  resetInput();
-  }else{
-    input.focus()
+    appendMessage();
+    sendMessage(input.value);
+    sendTypingStatus(isStoppedTyping = true);
+    resetInput();
+  } else {
+    input.focus();
   }
 });
 
@@ -108,31 +114,46 @@ socket.on("msg", ({ name, message }) => {
 // connected time
 socket.on("connected", (socketID) => {
   // alert(`${socketID} Joined in chat`);
-  statuselementCreateor(socketID,"Joined Chat")
-
+  statuselementCreateor(socketID, "Joined Chat");
 });
-
 
 // disconnection time
 socket.on("leave", (socketID) => {
   // alert(`${socketID} Disconnected`);
-  statuselementCreateor(socketID,"Left Chat")
+  statuselementCreateor(socketID, "Left Chat");
 });
+
+// handle isTyping incoming message
+socket.on("typing", ({isTyping,name}) => {
+  if (isTyping) {
+  
+    header_status.innerText = name+" "+"typing..."
+  }else{
+    header_status.innerText = "online";
+  }
+})
+
+
 
 // push up when key baord open messgaes
 
+const statuselementCreateor = (ID, method) => {
+  const statusContainer = document.createElement("div");
+  const status = document.createElement("div");
+  const messageStatus = document.createElement("p");
+  statusContainer.setAttribute("class", "join-status-container");
+  status.setAttribute("class", "join-info");
+  messageStatus.innerText = ID + " " + method;
+  statusContainer.appendChild(status);
+  status.appendChild(messageStatus);
+  message_body.appendChild(statusContainer);
+};
 
-
-
-const statuselementCreateor = (ID,method) => {
-  const statusContainer = document.createElement('div')
-  const status = document.createElement('div')
-  const messageStatus = document.createElement('p')
-  statusContainer.setAttribute('class','join-status-container')
-  status.setAttribute('class','join-info')
-  messageStatus.innerText = ID + " "+method;
-  statusContainer.appendChild(status)
-  status.appendChild(messageStatus)
-  message_body.appendChild(statusContainer)
-
-}
+// handle ontyping status
+const sendTypingStatus = (stoppedTyping) => {
+ 
+  socket.emit("typing", {
+    isTyping: stoppedTyping ? false : true,
+    name: name,
+  });
+};

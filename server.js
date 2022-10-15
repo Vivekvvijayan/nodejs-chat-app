@@ -21,12 +21,22 @@ io.on("connection", (socket) => {
       name: name,
       message: message
     });
+  });
+
+    // hnadle onTyping event
+    socket.on("typing",({isTyping,name}) => {
+  
+      socket.broadcast.emit("typing", {
+        isTyping: isTyping,
+        name: name
+      })
+    })
+
 
 // handle disconnection in server
     socket.on("disconnect", () => {
       socket.broadcast.emit("leave",socket.id)
     })
-  });
 
  
 
