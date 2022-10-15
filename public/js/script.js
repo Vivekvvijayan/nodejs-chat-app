@@ -32,10 +32,13 @@ window.addEventListener("keydown", (e) => {
 
 // send message after button clicked
 button.addEventListener("click", () => {
-  console.log(input.value);
+  if (input.value !== "") {
   appendMessage();
   sendMessage(input.value);
   resetInput();
+  }else{
+    input.focus()
+  }
 });
 
 const sendMessage = (msg) => {
