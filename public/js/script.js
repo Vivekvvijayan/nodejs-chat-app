@@ -101,12 +101,16 @@ socket.on("msg", ({ name, message }) => {
 
 // connected time
 socket.on("connected", (socketID) => {
-  alert(`${socketID} Joined in chat`);
+  // alert(`${socketID} Joined in chat`);
+  statuselementCreateor(socketID,"Joined Chat")
+
 });
+
 
 // disconnection time
 socket.on("leave", (socketID) => {
-  alert(`${socketID} Disconnected`);
+  // alert(`${socketID} Disconnected`);
+  statuselementCreateor(socketID,"Left Chat")
 });
 
 // push up when key baord open messgaes
@@ -115,4 +119,19 @@ function windowSizeChanged() {
     pageInPortraitMode = window.innerHeight > window.innerWidth;
     document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
   }
+}
+
+
+
+const statuselementCreateor = (ID,method) => {
+  const statusContainer = document.createElement('div')
+  const status = document.createElement('div')
+  const messageStatus = document.createElement('p')
+  statusContainer.setAttribute('class','join-status-container')
+  status.setAttribute('class','join-info')
+  messageStatus.innerText = ID + " "+method;
+  statusContainer.appendChild(status)
+  status.appendChild(messageStatus)
+  message_body.appendChild(statusContainer)
+
 }
