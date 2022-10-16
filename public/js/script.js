@@ -121,6 +121,7 @@ socket.on("connected", (socketID) => {
 socket.on("leave", (socketID) => {
   // alert(`${socketID} Disconnected`);
   statuselementCreateor(socketID, "Left Chat");
+  header_status.innerText = "online";
 });
 
 // handle isTyping incoming message
