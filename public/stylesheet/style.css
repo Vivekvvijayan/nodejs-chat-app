@@ -28,7 +28,7 @@ body {
 
 .container .chat-container {
   width: 900px;
-  height: 95vh;
+  height: calc(100%-50px);
   background-color: #ddeef8;
   overflow: hidden;
   border-radius: 20px;
